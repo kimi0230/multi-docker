@@ -1,0 +1,29 @@
+{
+    "AWSEBDockerrunVersion": 1,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "char0x00/multi-docker-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "char0x00/multi-docker-nginx",
+            "hostname": "nginx",
+            "essential": true
+        },
+        {
+            "name": "server",
+            "image": "char0x00/multi-docker-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "char0x00/multi-docker-worker",
+            "hostname": "worker",
+            "essential": false
+        }
+    ]
+}
