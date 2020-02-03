@@ -3,25 +3,25 @@ services:
   - docker
 
 before_install:
-  - docker build -t kimi/multi-docker-test -f ./client/Dockerfile.dev ./client
+  - docker build -t char0x00/multi-docker-test -f ./client/Dockerfile.dev ./client
 
 script:
-  # - docker run kimi/multi-docker-test yarn test -- --coverage
-  - docker run -e CI=true kimi/multi-docker-test yarn test
+  # - docker run char0x00/multi-docker-test yarn test -- --coverage
+  - docker run -e CI=true char0x00/multi-docker-test yarn test
 
 after_success:
   # Build prod versions of all projects
-  - docker build -t kimi/multi-docker-client ./client
-  - docker build -t kimi/multi-docker-nginx ./nginx
-  - docker build -t kimi/multi-docker-server ./server
-  - docker build -t kimi/multi-docker-worker ./worker
+  - docker build -t char0x00/multi-docker-client ./client
+  - docker build -t char0x00/multi-docker-nginx ./nginx
+  - docker build -t char0x00/multi-docker-server ./server
+  - docker build -t char0x00/multi-docker-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push kimi/multi-docker-client
-  - docker push kimi/multi-docker-nginx 
-  - docker push kimi/multi-docker-server
-  - docker push kimi/multi-docker-worker
+  - docker push char0x00/multi-docker-client
+  - docker push char0x00/multi-docker-nginx 
+  - docker push char0x00/multi-docker-server
+  - docker push char0x00/multi-docker-worker
 
 # deploy to aws
 # deploy:
