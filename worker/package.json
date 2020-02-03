@@ -4,7 +4,7 @@
         "redis":"2.8.0"
     },
     "scripts": {
-        "start": "yarn index.js",
+        "start": "node index.js",
         "dev":"nodemon"
     },
     "name": "worker",
