@@ -1,0 +1,37 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t kimi/multi-docker-test -f ./client/Dockerfile.dev .
+
+script:
+  - docker run -e CI=true kimi/multi-docker-test yarn test
+
+after_success:
+  # Build prod versions of all projects
+  - docker build -t kimi/multi-docker-client ./client
+  - docker build -t kimi/multi-docker-nginx ./nginx
+  - docker build -t kimi/multi-docker-server ./server
+  - docker build -t kimi/multi-docker-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push kimi/multi-docker-client
+  - docker push kimi/multi-docker-nginx 
+  - docker push kimi/multi-docker-server
+  - docker push kimi/multi-docker-worker
+
+# deploy to aws
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "ap-northeast-1"
+#   app: "AWSEBDocker"
+#   env: "Docker-env"
+#   bucket_name: "S3 bucket name"
+#   bucket_path: "AWSEBDocker"
+#   on:
+#     branch: master
+#   # at travis setting
+#   access_key_id: $AWS_ACCESS_KEY 
+#   secret_access_key: $AWS_SECRET_KEY
