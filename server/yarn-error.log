@@ -1,0 +1,51 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js docker_dev
+
+PATH: 
+  /Users/kimi/google-cloud-sdk/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Users/kimi/google-cloud-sdk/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/go/bin:/Users/kimi/go/bin:/usr/local/mysql/bin:/usr/local/go/bin:/Users/kimi/go/bin:/usr/local/mysql/bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.14.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/kimi/myGithub/DockerUdemy/complex/server/package.json: Unexpected token } in JSON at position 330
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+      "dependencies": {
+          "express": "4.16.3",
+          "pg":"7.4.3",
+          "redis":"2.8.0",
+          "cors":"2.8.4",
+          "nodemon":"1.18.3",
+          "body-parser": "1.19.0"
+      },
+      "scripts": {
+          "start": "yarn index.js",
+          "dev": "nodemon",
+          "docker_dev": "docker build -f Dockerfile.dev .",
+      },
+      "name": "server",
+      "description": "",
+      "version": "1.0.0",
+      "main": "index.js",
+      "author": "",
+      "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

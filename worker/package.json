@@ -1,0 +1,16 @@
+{
+    "dependencies": {
+        "nodemon": "1.18.3",
+        "redis":"2.8.0"
+    },
+    "scripts": {
+        "start": "yarn index.js",
+        "dev":"nodemon"
+    },
+    "name": "worker",
+    "description": "",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "",
+    "license": "ISC"
+}
